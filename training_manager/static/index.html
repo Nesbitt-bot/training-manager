@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>training-manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>training-manager</h1>
+    <div id="projects"></div>
+    <div class="grid">
+      <section>
+        <h2 id="project-title">Project</h2>
+        <div class="actions">
+          <button onclick="act('start')">Start</button>
+          <button onclick="act('stop')">Stop</button>
+          <button onclick="act('pull')">Git Pull</button>
+          <button onclick="act('push')">Git Push</button>
+          <button onclick="act('checkpoint')">Checkpoint Commit</button>
+        </div>
+        <pre id="status"></pre>
+      </section>
+      <section>
+        <h2>Stages / ETA / Checkpoints</h2>
+        <pre id="events"></pre>
+      </section>
+      <section class="full">
+        <h2>Metrics</h2>
+        <canvas id="chart" width="1200" height="320"></canvas>
+      </section>
+      <section class="full">
+        <h2>Logs</h2>
+        <pre id="logs"></pre>
+      </section>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
