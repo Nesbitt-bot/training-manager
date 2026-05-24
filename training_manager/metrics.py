@@ -6,20 +6,28 @@ from pathlib import Path
 from typing import Any
 
 from .project import repo_path
+from .util import log_manager
 
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
     rows = []
-    for line in path.read_text(errors="ignore").splitlines():
+    for idx, line in enumerate(path.read_text(errors="ignore").splitlines(), start=1):
         line = line.strip()
         if not line:
             continue
         try:
             rows.append(json.loads(line))
-        except json.JSONDecodeError:
-            continue
+        except json.JSONDecodeError as exc:
+            log_manager(
+                "failed to parse jsonl line",
+                level="ERROR",
+                path=str(path),
+                line_number=idx,
+                error=str(exc),
+                sample=line[:400],
+            )
     return rows
 
 

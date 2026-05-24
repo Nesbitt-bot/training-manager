@@ -11,6 +11,7 @@ Most training workflows still assume a human babysits a terminal, a notebook tab
 `training-manager` gives maintainers a minimal control plane for local or remote training projects:
 
 - initialize a managed training project from a git repo or local path
+- override the detected job command when the repo needs a specific wrapper
 - start and stop long-running jobs
 - inspect logs and runtime state in a browser
 - capture metrics, stages, checkpoints, and ETA via a tiny Python SDK
@@ -29,6 +30,7 @@ Most training workflows still assume a human babysits a terminal, a notebook tab
   - ETA and detailed progress
   - scalar metrics / loss charts
 - support both `.py` and `.ipynb`
+- inject `TRAINING_MANAGER_DIR` and a usable `PYTHONPATH` into managed jobs
 - default UI bind: `127.0.0.1:14514`
 
 ## Install
@@ -71,23 +73,36 @@ Then open:
 http://127.0.0.1:14514
 ```
 
-## Lavender-2 example
+## Override the detected command
 
-Lavender-2 now exposes a repo-root `train.py` wrapper specifically so
-`training-manager` can supervise the full notebook pipeline without
-pretending the notebook itself is already a clean CLI.
+Some repos need a specific wrapper or alternate notebook.
 
 ```bash
-training-manager init --path /absolute/path/to/Lavender-2 --name lavender-2
+training-manager init \
+  --path /path/to/repo \
+  --name my-project \
+  --command "python3 train.py --notebook toy_torch_training.ipynb"
+```
+
+That is the preferred path for Lavender-2 local validation.
+
+## Lavender-2 examples
+
+### Small-host validation
+
+```bash
+training-manager init --path /absolute/path/to/Lavender-2 --name lavender-toy \
+  --command "python3 train.py --notebook toy_torch_training.ipynb"
 training-manager serve
 ```
 
-In the UI:
+### Rich-host full pipeline
 
-1. select `lavender-2`
-2. click **Start**
-3. watch the log pane for `uv sync` and `NbConvertApp`
-4. watch stages / checkpoints as the notebook progresses
+```bash
+training-manager init --path /absolute/path/to/Lavender-2 --name lavender-full \
+  --command "python3 train.py --notebook full_llm_pipeline.ipynb"
+training-manager serve
+```
 
 ## Demo media
 
@@ -132,6 +147,7 @@ Arguments:
 - `--name` — logical project name used in the state registry
 - `--repo` — git URL to clone into the managed projects area
 - `--path` — existing local path to copy into the managed projects area
+- `--command` — optional override for the detected command
 
 ### `training-manager serve`
 
@@ -165,6 +181,29 @@ Global state lives under:
 ```text
 ~/.training-manager/
 ```
+
+## Diagnostics
+
+### Managed project log
+
+```text
+~/.training-manager/projects/<name>/.training-manager/logs/train.log
+```
+
+### Manager internal log
+
+```text
+~/.training-manager/manager.log
+```
+
+That global log now records things like:
+
+- command detection choices
+- JSON / JSONL parse failures
+- failed subprocess calls
+- API handler errors
+- git pull / push failures
+- stop-job escalation and lingering-process state
 
 ## How job detection currently works
 
@@ -212,6 +251,8 @@ Before publishing or opening issues, keep the local planning docs tidy:
 - [`docs/maintainer-backlog.md`](docs/maintainer-backlog.md)
 - [`docs/github-labels.md`](docs/github-labels.md)
 - [`.github/labels.json`](.github/labels.json)
+- [`docs/environment-setup.md`](docs/environment-setup.md)
+- [`docs/lavender-2.md`](docs/lavender-2.md)
 
 Issue templates live under [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
 

@@ -23,4 +23,6 @@ It gives future maintainers a small control surface for training repos that need
 
 - [Getting started](getting-started.md)
 - [Architecture](architecture.md)
+- [Environment setup](environment-setup.md)
+- [Lavender-2 integration](lavender-2.md)
 - [Maintainer notes](maintainer-notes.md)

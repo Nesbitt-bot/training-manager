@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import os
+import shlex
 import shutil
 import time
 from pathlib import Path
 from typing import Any
 
 from .paths import PROJECTS_DIR, REGISTRY_PATH, ensure_state_root
-from .util import read_json, run, write_json, which
+from .util import log_manager, read_json, run, write_json, which
+
+
+MANAGER_REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def registry() -> dict[str, Any]:
@@ -47,17 +51,44 @@ def save_runtime(name: str, data: dict[str, Any]) -> None:
     write_json(runtime_file(name), data)
 
 
+def _manager_pythonpath() -> str:
+    current = os.environ.get("PYTHONPATH")
+    parts = [str(MANAGER_REPO_ROOT)]
+    if current:
+        parts.append(current)
+    return os.pathsep.join(parts)
+
+
 def detect_command(repo_path: Path) -> list[str]:
     for candidate in ["train.py", "scripts/train.py", "main.py"]:
         if (repo_path / candidate).exists():
-            return ["python3", candidate]
+            cmd = ["python3", candidate]
+            log_manager("detected project command", repo=str(repo_path), command=cmd)
+            return cmd
     notebooks = sorted(repo_path.glob("*.ipynb"))
     if notebooks:
-        return ["jupyter", "nbconvert", "--to", "notebook", "--execute", "--inplace", notebooks[0].name]
-    return ["python3", "-m", "http.server", "0"]
+        cmd = ["jupyter", "nbconvert", "--to", "notebook", "--execute", "--inplace", notebooks[0].name]
+        log_manager("detected notebook command", repo=str(repo_path), command=cmd)
+        return cmd
+    cmd = ["python3", "-m", "http.server", "0"]
+    log_manager("using placeholder project command", level="WARNING", repo=str(repo_path), command=cmd)
+    return cmd
 
 
-def init_project(name: str, repo: str | None = None, path: str | None = None) -> dict[str, Any]:
+def _normalize_command(command: str | list[str] | None) -> list[str] | None:
+    if command is None:
+        return None
+    if isinstance(command, str):
+        return shlex.split(command)
+    return [str(x) for x in command]
+
+
+def init_project(
+    name: str,
+    repo: str | None = None,
+    path: str | None = None,
+    command: str | list[str] | None = None,
+) -> dict[str, Any]:
     ensure_state_root()
     root = project_dir(name)
     if root.exists() and any(root.iterdir()):
@@ -69,6 +100,7 @@ def init_project(name: str, repo: str | None = None, path: str | None = None) ->
         shutil.copytree(path, root, dirs_exist_ok=True)
     else:
         root.mkdir(parents=True, exist_ok=True)
+    chosen_command = _normalize_command(command) or detect_command(root)
     cfg = {
         "name": name,
         "repo_path": str(root),
@@ -80,8 +112,11 @@ def init_project(name: str, repo: str | None = None, path: str | None = None) ->
         "default_job": {
             "name": "train",
             "cwd": str(root),
-            "command": detect_command(root),
-            "env": {"TRAINING_MANAGER_DIR": str(root / ".training-manager")},
+            "command": chosen_command,
+            "env": {
+                "TRAINING_MANAGER_DIR": str(root / ".training-manager"),
+                "PYTHONPATH": _manager_pythonpath(),
+            },
             "log_file": str(root / ".training-manager" / "logs" / "train.log"),
             "checkpoint_globs": ["checkpoints/**", "*.ckpt", "*.pt", "*.pth", "*.safetensors"],
         },
@@ -91,6 +126,15 @@ def init_project(name: str, repo: str | None = None, path: str | None = None) ->
     reg = registry()
     reg["projects"][name] = {"path": str(root), "repo_url": repo}
     save_registry(reg)
+    log_manager(
+        "initialized project",
+        name=name,
+        repo=str(repo) if repo else None,
+        path=str(path) if path else None,
+        managed_path=str(root),
+        command=chosen_command,
+        mode=cfg["mode"],
+    )
     return cfg
 
 
@@ -117,3 +161,4 @@ def repo_path(name: str) -> Path:
 
 def update_project_config(name: str, cfg: dict[str, Any]) -> None:
     write_json(project_file(name), cfg)
+    log_manager("updated project config", name=name, command=cfg.get("default_job", {}).get("command"))

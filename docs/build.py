@@ -14,12 +14,16 @@ PAGES = [
     ("index.md", "index.html", "Home"),
     ("getting-started.md", "getting-started.html", "Getting started"),
     ("architecture.md", "architecture.html", "Architecture"),
+    ("environment-setup.md", "environment-setup.html", "Environment setup"),
+    ("lavender-2.md", "lavender-2.html", "Lavender-2 integration"),
     ("maintainer-notes.md", "maintainer-notes.html", "Maintainer notes"),
 ]
 NAV = [
     ("index.html", "Home"),
     ("getting-started.html", "Getting started"),
     ("architecture.html", "Architecture"),
+    ("environment-setup.html", "Environment setup"),
+    ("lavender-2.html", "Lavender-2 integration"),
     ("maintainer-notes.html", "Maintainer notes"),
 ]
 

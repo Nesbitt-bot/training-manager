@@ -28,6 +28,15 @@ training-manager serve
 
 Open `http://127.0.0.1:14514`.
 
+## Override the detected command when needed
+
+```bash
+training-manager init --name lavender-toy --path /path/to/Lavender-2 \
+  --command "python3 train.py --notebook toy_torch_training.ipynb"
+```
+
+That pattern is the recommended way to validate notebook supervision on a small host.
+
 ## Emit training telemetry
 
 ```python

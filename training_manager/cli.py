@@ -15,6 +15,7 @@ def main() -> None:
     p_init.add_argument("--name", required=True)
     p_init.add_argument("--repo")
     p_init.add_argument("--path")
+    p_init.add_argument("--command", help="override the detected job command, e.g. 'python3 train.py --notebook toy_torch_training.ipynb'")
 
     p_serve = sub.add_parser("serve")
     p_serve.add_argument("--host", default=DEFAULT_HOST)
@@ -24,7 +25,7 @@ def main() -> None:
 
     args = parser.parse_args()
     if args.cmd == "init":
-        cfg = init_project(args.name, repo=args.repo, path=args.path)
+        cfg = init_project(args.name, repo=args.repo, path=args.path, command=args.command)
         print(cfg["repo_path"])
     elif args.cmd == "serve":
         serve(args.host, args.port)
