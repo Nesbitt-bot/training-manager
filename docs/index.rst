@@ -17,6 +17,7 @@ Contents
    getting-started
    cli
    architecture
+   host-preparation
    diagnostics
    examples
    maintainer-notes
