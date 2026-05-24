@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0a0f1e"/>
+  <rect x="48" y="48" width="1184" height="624" rx="18" fill="#121934" stroke="#2a3568"/>
+  <text x="84" y="104" fill="#eef2ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">lavender-2</text>
+  <rect x="84" y="130" width="130" height="40" rx="20" fill="#14532d"/><text x="123" y="156" fill="#dcfce7" font-family="Arial, sans-serif" font-size="19">running</text>
+  <rect x="84" y="202" width="320" height="68" rx="12" fill="#1f2a55" stroke="#3d4f93"/>
+  <text x="106" y="242" fill="#eef2ff" font-family="Arial, sans-serif" font-size="22">Start / Stop / Pull / Push</text>
+  <rect x="432" y="202" width="340" height="68" rx="12" fill="#1f2a55" stroke="#3d4f93"/>
+  <text x="456" y="242" fill="#eef2ff" font-family="Arial, sans-serif" font-size="22">Checkpoint commit</text>
+  <rect x="84" y="304" width="502" height="314" rx="12" fill="#171f43" stroke="#34437a"/>
+  <text x="108" y="346" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Runtime state</text>
+  <text x="108" y="388" fill="#8ea0df" font-family="monospace" font-size="19">pid: 45692</text>
+  <text x="108" y="418" fill="#8ea0df" font-family="monospace" font-size="19">started_at: 1779596677</text>
+  <text x="108" y="448" fill="#8ea0df" font-family="monospace" font-size="19">cwd: ~/.training-manager/projects/lavender-2</text>
+  <text x="108" y="478" fill="#8ea0df" font-family="monospace" font-size="19">command: python3 train.py</text>
+  <text x="108" y="508" fill="#8ea0df" font-family="monospace" font-size="19">mode: detached</text>
+  <rect x="618" y="304" width="558" height="144" rx="12" fill="#171f43" stroke="#34437a"/>
+  <text x="642" y="346" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Recent stages</text>
+  <text x="642" y="388" fill="#8ea0df" font-family="monospace" font-size="18">bootstrap</text>
+  <text x="642" y="416" fill="#8ea0df" font-family="monospace" font-size="18">uv-sync</text>
+  <text x="642" y="444" fill="#8ea0df" font-family="monospace" font-size="18">full-llm-pipeline</text>
+  <rect x="618" y="474" width="558" height="144" rx="12" fill="#171f43" stroke="#34437a"/>
+  <text x="642" y="516" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Recent log tail</text>
+  <text x="642" y="558" fill="#8ea0df" font-family="monospace" font-size="18">[NbConvertApp] Converting notebook ...</text>
+  <text x="642" y="586" fill="#8ea0df" font-family="monospace" font-size="18">[Pretrain] progress: ...</text>

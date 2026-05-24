@@ -71,6 +71,46 @@ Then open:
 http://127.0.0.1:14514
 ```
 
+## Lavender-2 example
+
+Lavender-2 now exposes a repo-root `train.py` wrapper specifically so
+`training-manager` can supervise the full notebook pipeline without
+pretending the notebook itself is already a clean CLI.
+
+```bash
+training-manager init --path /absolute/path/to/Lavender-2 --name lavender-2
+training-manager serve
+```
+
+In the UI:
+
+1. select `lavender-2`
+2. click **Start**
+3. watch the log pane for `uv sync` and `NbConvertApp`
+4. watch stages / checkpoints as the notebook progresses
+
+## Demo media
+
+These are currently lightweight placeholder mockups kept stable so they
+can be replaced later with real captures without churn.
+
+### Dashboard overview
+
+![training-manager dashboard overview](docs/media/dashboard-overview.svg)
+
+### Project detail view
+
+![training-manager project detail](docs/media/project-detail.svg)
+
+### Planned GIF
+
+A future `docs/media/training-run.gif` should show:
+
+- starting a managed project
+- logs becoming active
+- metrics chart gaining points
+- checkpoint/state updates appearing in the event panel
+
 ## CLI reference
 
 ### `training-manager init`
@@ -163,6 +203,17 @@ reporter.checkpoint("checkpoints/latest.ckpt", status="saved")
 ```
 
 The UI still works without instrumentation, but charts and stage tracking are much better with it.
+
+## Maintainer planning
+
+Before publishing or opening issues, keep the local planning docs tidy:
+
+- [`docs/roadmap.md`](docs/roadmap.md)
+- [`docs/maintainer-backlog.md`](docs/maintainer-backlog.md)
+- [`docs/github-labels.md`](docs/github-labels.md)
+- [`.github/labels.json`](.github/labels.json)
+
+Issue templates live under [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
 
 ## Docs
 

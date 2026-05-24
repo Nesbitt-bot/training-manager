@@ -1,0 +1,22 @@
+[
+  {"name":"type:bug","color":"d73a4a","description":"Broken behavior, regressions, crashes"},
+  {"name":"type:feature","color":"a2eeef","description":"New user-visible capability"},
+  {"name":"type:docs","color":"0075ca","description":"Documentation-only work"},
+  {"name":"type:refactor","color":"cfd3d7","description":"Internal cleanup without new behavior"},
+  {"name":"type:infra","color":"5319e7","description":"CI, packaging, release, deployment work"},
+  {"name":"area:cli","color":"bfdadc","description":"Command-line interface"},
+  {"name":"area:ui","color":"bfd4f2","description":"Browser UI and front-end behavior"},
+  {"name":"area:runtime","color":"f9d0c4","description":"Detached/supervisor process handling"},
+  {"name":"area:metrics","color":"fef2c0","description":"Events, metrics, charts"},
+  {"name":"area:docs","color":"c5def5","description":"README and docs site"},
+  {"name":"area:packaging","color":"d4c5f9","description":"Package metadata and release prep"},
+  {"name":"prio:p0","color":"b60205","description":"Blocks real use"},
+  {"name":"prio:p1","color":"d93f0b","description":"Should happen soon"},
+  {"name":"prio:p2","color":"fbca04","description":"Useful but not urgent"},
+  {"name":"prio:p3","color":"0e8a16","description":"Nice-to-have / backlog"},
+  {"name":"status:needs-triage","color":"ededed","description":"Needs initial sorting"},
+  {"name":"status:ready","color":"0e8a16","description":"Ready to work"},
+  {"name":"status:blocked","color":"b60205","description":"Blocked on dependency or decision"},
+  {"name":"status:help-wanted","color":"008672","description":"External help welcome"},
+  {"name":"status:good-first-issue","color":"7057ff","description":"Good starter task"}
+]

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0b1020"/>
+  <rect x="40" y="32" width="1200" height="656" rx="18" fill="#121934" stroke="#2a3568"/>
+  <text x="72" y="88" fill="#eef2ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">training-manager</text>
+  <rect x="72" y="112" width="130" height="36" rx="18" fill="#26315f"/><text x="102" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">lavender-2</text>
+  <rect x="220" y="112" width="92" height="36" rx="18" fill="#26315f"/><text x="246" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">raven-24</text>
+  <rect x="72" y="176" width="520" height="180" rx="14" fill="#171f43" stroke="#34437a"/>
+  <text x="96" y="216" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Project status</text>
+  <text x="96" y="258" fill="#8ea0df" font-family="monospace" font-size="20">backend: detached</text>
+  <text x="96" y="290" fill="#8ea0df" font-family="monospace" font-size="20">running: true</text>
+  <text x="96" y="322" fill="#8ea0df" font-family="monospace" font-size="20">command: python3 train.py</text>
+  <rect x="622" y="176" width="546" height="180" rx="14" fill="#171f43" stroke="#34437a"/>
+  <text x="646" y="216" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Stages / ETA / checkpoints</text>
+  <text x="646" y="258" fill="#8ea0df" font-family="monospace" font-size="19">stage: uv-sync → full-llm-pipeline</text>
+  <text x="646" y="290" fill="#8ea0df" font-family="monospace" font-size="19">eta_seconds: 18240</text>
+  <text x="646" y="322" fill="#8ea0df" font-family="monospace" font-size="19">checkpoint: pretrain-02-30-58-0001.pt</text>
+  <rect x="72" y="386" width="1096" height="128" rx="14" fill="#171f43" stroke="#34437a"/>
+  <text x="96" y="426" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Metrics</text>
+  <polyline fill="none" stroke="#8b5cf6" stroke-width="4" points="118,476 218,472 318,460 418,448 518,430 618,420 718,401 818,382 918,360 1018,336 1118,312"/>
+  <text x="1030" y="334" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="18">loss</text>
+  <rect x="72" y="544" width="1096" height="112" rx="14" fill="#171f43" stroke="#34437a"/>
+  <text x="96" y="584" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Logs</text>
+  <text x="96" y="618" fill="#8ea0df" font-family="monospace" font-size="18">[NbConvertApp] Converting notebook full_llm_pipeline.ipynb to notebook</text>
