@@ -8,5 +8,6 @@ tmp_*/
 .demo/
 *.log
 .venv/
+docs/_build/
 docs/_site/
 *.egg-info/

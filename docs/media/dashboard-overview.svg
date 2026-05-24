@@ -2,8 +2,8 @@
   <rect width="1280" height="720" fill="#0b1020"/>
   <rect x="40" y="32" width="1200" height="656" rx="18" fill="#121934" stroke="#2a3568"/>
   <text x="72" y="88" fill="#eef2ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">training-manager</text>
-  <rect x="72" y="112" width="130" height="36" rx="18" fill="#26315f"/><text x="102" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">lavender-2</text>
-  <rect x="220" y="112" width="92" height="36" rx="18" fill="#26315f"/><text x="246" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">raven-24</text>
+  <rect x="72" y="112" width="156" height="36" rx="18" fill="#26315f"/><text x="98" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">toy-notebook</text>
+  <rect x="246" y="112" width="118" height="36" rx="18" fill="#26315f"/><text x="270" y="136" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="18">vision-run</text>
   <rect x="72" y="176" width="520" height="180" rx="14" fill="#171f43" stroke="#34437a"/>
   <text x="96" y="216" fill="#eef2ff" font-family="Arial, sans-serif" font-size="24" font-weight="700">Project status</text>
   <text x="96" y="258" fill="#8ea0df" font-family="monospace" font-size="20">backend: detached</text>
