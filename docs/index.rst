@@ -1,15 +1,14 @@
-training-manager
-================
+training-manager: A Host-Native Job Control System
+==================================================
 
-``training-manager`` is a lightweight, host-native web UI for long-running
-Python and notebook jobs.
+``training-manager`` helps users start, monitor, and control long-running
+Python and notebook jobs on a host machine.
 
-It is meant for the awkward middle ground between raw terminal sessions that
-die when a shell closes and heavyweight orchestration stacks that are overkill
-for a single workstation or lab box.
+It is meant for project, local, and lab-machine process management rather than
+as a replacement for full orchestration stacks.
 
-Contents
---------
+Narrative Documentation
+-----------------------
 
 .. toctree::
    :maxdepth: 2
@@ -21,4 +20,18 @@ Contents
    diagnostics
    examples
    maintainer-notes
+
+API Documentation
+-----------------
+
+.. toctree::
+   :maxdepth: 2
+
    api
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
